@@ -1,0 +1,16 @@
+A fair six-sided die is rolled once. Let X be the number that appears on the die. What is the probability that:
+a) x = 4
+b) x <= 3
+c) x > 4
+a) X=4               
+
+Class Task 3
+Probability Distributions
+Instruction: Read up on the following Probability Distributions, and group them into the category they fall under.
+
+To be submitted using Jupyter Notebook
+Binomial Distribution
+Poisson Distribution
+Geometric Distribution
+Exponential Distribution
+Uniform (Continuous) Distribution
