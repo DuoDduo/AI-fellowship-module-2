@@ -14,4 +14,4 @@ df_books = pd.read_sql("SELECT * FROM Books", engine)
 df_authors = pd.read_sql("SELECT * FROM Authors", engine)
 
 print(df_books.head())
-# print(df_authors.head())
+print(df_authors.head())
