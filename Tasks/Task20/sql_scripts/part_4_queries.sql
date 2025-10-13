@@ -12,12 +12,7 @@ JOIN
   authors
 ON 
   books.author_id = authors.author_id
-WHERE EXTRACT(YEAR FROM books.date_of_publication) > 2015
-
-
-
-
-
+WHERE EXTRACT(YEAR FROM books.date_of_publication) > 2015;
 
 
 
@@ -36,11 +31,6 @@ WHERE EXTRACT(YEAR FROM members.date_of_membership) > 2021 and type_of_membershi
 
 ORDER BY date_of_membership;
 
-
-
-
-
-
 -- **Q3.** Display the total number of books written by each author, ordered by count (descending).
 SELECT 
     author_id,
@@ -50,13 +40,6 @@ FROM
     Authors
 ORDER BY 
     number_of_books_written DESC;
-
-
-
-
-
-
-
 
 -- **Q4.** Show all currently borrowed books (books with no return date) along with the member's name and borrow date.
 
@@ -71,22 +54,11 @@ ON books.book_id = borrowhistory.book_id
 WHERE borrowhistory.return_date IS NULL;
 
 
-
-
-
-
-
 -- **Q5.** List all library staff members working in the 'Circulation' department.
 SELECT * FROM librarystaff 
 JOIN Departments
 ON departments.dept_id = librarystaff.dept_id
 WHERE department_name = 'Circulation';
-
-
-
-
-
-
 
 
 --Q6.** Calculate total cost of all book orders placed in 2024, grouped by fulfillment status
@@ -96,12 +68,6 @@ FROM BookOrders
 WHERE EXTRACT(YEAR FROM order_date) = 2024
 GROUP BY fulfilment_status
 ORDER BY total_cost DESC;
-
-
-
-
-
-
 
 
 -- **Q7.** Find the top 5 most borrowed books along with the number of times each has been borrowed.
@@ -121,20 +87,12 @@ ORDER BY
 LIMIT 5;
 
 
-
-
 -- **Q8.** Identify members who have never borrowed a book.
 
 SELECT * FROM members
 LEFT JOIN borrowhistory
 ON members.member_id = borrowhistory.member_id
 WHERE borrowhistory.member_id IS NULL;
-
-
-
-
-
-
 
 
 -- **Q9.** Show the average number of available copies per genre.
@@ -147,12 +105,6 @@ GROUP BY
     books.genre
 ORDER BY 
     avg_available_copies ASC;
-
-
-
-
-
-
 
 
 -- -- **Q10.** List all books that are currently overdue (borrowed more than 30 days ago with no return date).
@@ -175,10 +127,7 @@ ORDER BY
     borrowhistory.borrow_date ASC;
 
 
-	
-
-
--- **Q11.** Show each department's staff count and the average tenure (in years) of staff in that department.
+	-- **Q11.** Show each department's staff count and the average tenure (in years) of staff in that department.
 SELECT 
     departments.department_name,
     COUNT(librarystaff.staff_id) AS staff_count,
@@ -194,8 +143,6 @@ ORDER BY
     staff_count DESC;
 
 
-
-
 -- **Q12.** Generate a report showing monthly borrowing trends for the past year (count of books borrowed per month)
 SELECT 
     TO_CHAR(borrow_date, 'Month') AS month_name,
@@ -207,9 +154,6 @@ GROUP BY
     YEAR, month_name, EXTRACT(MONTH FROM borrow_date)
 ORDER BY 
     YEAR, EXTRACT(MONTH FROM borrow_date);
-
-
-
 
 
 -- -- **Q13.** Find authors whose books have been borrowed more than 10 times in total, along with their most popular book.
@@ -231,10 +175,6 @@ ORDER BY
     total_borrows DESC;
 
 
-
-
-
-
 -- Q14. Calculate the total revenue from book orders per supplier, showing only suppliers with orders exceeding $5,000.
 
 SELECT 
@@ -248,13 +188,6 @@ HAVING
     SUM(cost * quantity) > 5000
 ORDER BY 
     total_revenue DESC;
-
-
-
-
-
-
-
 
 
 -- **Q15.** Create a complex query that identifies "inactive" members (those who haven't borrowed a book in the last 6 months) who have a Premium membership.
